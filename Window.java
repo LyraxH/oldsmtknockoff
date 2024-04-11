@@ -317,6 +317,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
             // stat view clicks
             case "ameNoUzume":
                 System.out.println("ame no uzume stats view");
+                createStatsMenu("Ame-No-Uzume", 0, 1, 2, 3, 4, 5, 6, 7);
                 break;
             case "archangel":
                 System.out.println("archangel stats view");
@@ -413,6 +414,38 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                 break;
         }
     }
+    void createStatsMenu(String name, int character, int one, int two, int three, int four, int five, int six, int seven){
+        JDialog box = new JDialog(this);
+        box.setTitle(name + " stats");
+        box.setBounds(200,400, 800, 200);
+        box.setLayout(new GridLayout(2, 8));
+        
+        JLabel nameLabel = new JLabel(name);
+        switch (character){
+            case 0:
+                box.add(img.ameNoUzume);
+                break;
+        } 
+        box.add(img.fire); // adding affinities to the top row
+        box.add(img.water); // adding affinities to the top row
+        box.add(img.earth); // adding affinities to the top row
+        box.add(img.air); // adding affinities to the top row
+        box.add(img.sun); // adding affinities to the top row
+        box.add(img.moon); // adding affinities to the top row
+        box.add(img.phys); // adding affinities to the top row
+        box.add(nameLabel); // adding name to the bottom row
+        
+        box.add(img.weak);
+        box.add(img.resist);
+        box.add(img.nullify);
+        box.add(img.normal);
+        
+        
+        
+        
+        box.toFront();
+        box.setVisible(true);
+    }
     public void createBattleLog(){
         JDialog box = new JDialog(this);
         box.setTitle("Battle Log");
@@ -426,7 +459,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         }
         TextArea area = new TextArea(a);
         box.add(area);
-        box.setBounds(200,400, 400,400);
+        box.setBounds(400,200, 400,400);
         box.toFront();
         box.setVisible(true);
     }
@@ -449,8 +482,6 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     public void mousePressed(MouseEvent e){}
     public void mouseReleased(MouseEvent e){}
     public void mouseClicked(MouseEvent e){}
-        
-    
     void setMenu(){
         this.setJMenuBar(menuBar);
         menuBar.add(system);
@@ -469,115 +500,115 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     void setImages(){
         switch (game.allyOne){
             case 1:
-                allyOneButton.setIcon(img.ameNoUzume);
+                allyOneButton.setIcon(img.ameNoUzumeIMG);
                 break;
             case 2:
-                allyOneButton.setIcon(img.cendrillon);
+                allyOneButton.setIcon(img.cendrillonIMG);
                 break;
             case 3:
-                allyOneButton.setIcon(img.orpheus);
+                allyOneButton.setIcon(img.orpheusIMG);
                 break;
             case 4:
-                allyOneButton.setIcon(img.robinHood);
+                allyOneButton.setIcon(img.robinHoodIMG);
                 break;
         }
         switch (game.allyTwo){
             case 1:
-                allyTwoButton.setIcon(img.ameNoUzume);
+                allyTwoButton.setIcon(img.ameNoUzumeIMG);
                 break;
             case 2:
-                allyTwoButton.setIcon(img.cendrillon);
+                allyTwoButton.setIcon(img.cendrillonIMG);
                 break;
             case 3:
-                allyTwoButton.setIcon(img.orpheus);
+                allyTwoButton.setIcon(img.orpheusIMG);
                 break;
             case 4:
-                allyTwoButton.setIcon(img.robinHood);
+                allyTwoButton.setIcon(img.robinHoodIMG);
                 break;
         }
         switch (game.allyThree){
             case 1:
-                allyThreeButton.setIcon(img.ameNoUzume);
+                allyThreeButton.setIcon(img.ameNoUzumeIMG);
                 break;
             case 2:
-                allyThreeButton.setIcon(img.cendrillon);
+                allyThreeButton.setIcon(img.cendrillonIMG);
                 break;
             case 3:
-                allyThreeButton.setIcon(img.orpheus);
+                allyThreeButton.setIcon(img.orpheusIMG);
                 break;
             case 4:
-                allyThreeButton.setIcon(img.robinHood);
+                allyThreeButton.setIcon(img.robinHoodIMG);
                 break;
         }
         switch (game.allyFour){
             case 1:
-                allyFourButton.setIcon(img.ameNoUzume);
+                allyFourButton.setIcon(img.ameNoUzumeIMG);
                 break;
             case 2:
-                allyFourButton.setIcon(img.cendrillon);
+                allyFourButton.setIcon(img.cendrillonIMG);
                 break;
             case 3:
-                allyFourButton.setIcon(img.orpheus);
+                allyFourButton.setIcon(img.orpheusIMG);
                 break;
             case 4:
-                allyFourButton.setIcon(img.robinHood);
+                allyFourButton.setIcon(img.robinHoodIMG);
                 break;
         }
         
         switch (game.enemyOne){
             case 1:
-                enemyOneButton.setIcon(img.archangel);
+                enemyOneButton.setIcon(img.archangelIMG);
                 break;
             case 2:
-                enemyOneButton.setIcon(img.jackFrost);
+                enemyOneButton.setIcon(img.jackFrostIMG);
                 break;
             case 3:
-                enemyOneButton.setIcon(img.legion);
+                enemyOneButton.setIcon(img.legionIMG);
                 break;
             case 4:
-                enemyOneButton.setIcon(img.principality);
+                enemyOneButton.setIcon(img.principalityIMG);
                 break;
         }
         switch (game.enemyTwo){
             case 1:
-                enemyTwoButton.setIcon(img.archangel);
+                enemyTwoButton.setIcon(img.archangelIMG);
                 break;
             case 2:
-                enemyTwoButton.setIcon(img.jackFrost);
+                enemyTwoButton.setIcon(img.jackFrostIMG);
                 break;
             case 3:
-                enemyTwoButton.setIcon(img.legion);
+                enemyTwoButton.setIcon(img.legionIMG);
                 break;
             case 4:
-                enemyTwoButton.setIcon(img.principality);
+                enemyTwoButton.setIcon(img.principalityIMG);
                 break;
         }
         switch (game.enemyThree){
             case 1:
-                enemyThreeButton.setIcon(img.archangel);
+                enemyThreeButton.setIcon(img.archangelIMG);
                 break;
             case 2:
-                enemyThreeButton.setIcon(img.jackFrost);
+                enemyThreeButton.setIcon(img.jackFrostIMG);
                 break;
             case 3:
-                enemyThreeButton.setIcon(img.legion);
+                enemyThreeButton.setIcon(img.legionIMG);
                 break;
             case 4:
-                enemyThreeButton.setIcon(img.principality);
+                enemyThreeButton.setIcon(img.principalityIMG);
                 break;
         }
         switch (game.enemyFour){
             case 1:
-                enemyFourButton.setIcon(img.archangel);
+                enemyFourButton.setIcon(img.archangelIMG);
                 break;
             case 2:
-                enemyFourButton.setIcon(img.jackFrost);
+                enemyFourButton.setIcon(img.jackFrostIMG);
                 break;
             case 3:
-                enemyFourButton.setIcon(img.legion);
+                enemyFourButton.setIcon(img.legionIMG);
                 break;
             case 4:
-                enemyFourButton.setIcon(img.principality);
+                enemyFourButton.setIcon(img.principalityIMG);
                 break;
         }
     }

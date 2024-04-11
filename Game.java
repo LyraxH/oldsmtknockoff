@@ -47,4 +47,15 @@ public class Game
     public void Start(){
         
     }
+    
+    /**
+     * ELEMENTS AND INDEX
+     * 0 - fire
+     * 1 - water
+     * 2 - wind
+     * 3 - earth
+     * 4 - sun
+     * 5 - moon
+     * 6 - physical
+     */
 }

@@ -21,14 +21,49 @@ public class Images
     ImageIcon itemIcon = new ImageIcon("buttons/selectedItem.png");
     
     // allies
-    ImageIcon ameNoUzume = new ImageIcon("allies/100ameNoUzume.png");
-    ImageIcon cendrillon = new ImageIcon("allies/100cendrillon.png");
-    ImageIcon orpheus = new ImageIcon("allies/100orpheus.png");
-    ImageIcon robinHood = new ImageIcon("allies/100robinHood.png");
+    ImageIcon ameNoUzumeIMG = new ImageIcon("allies/100ameNoUzume.png");
+    ImageIcon cendrillonIMG = new ImageIcon("allies/100cendrillon.png");
+    ImageIcon orpheusIMG = new ImageIcon("allies/100orpheus.png");
+    ImageIcon robinHoodIMG = new ImageIcon("allies/100robinHood.png");
+    //turning allies into jlabels
+    JLabel ameNoUzume = new JLabel(ameNoUzumeIMG);
+    JLabel cendrillon = new JLabel(cendrillonIMG);
+    JLabel orpheus = new JLabel(orpheusIMG);
+    JLabel robinHood = new JLabel(robinHoodIMG);
     
     // enemies
-    ImageIcon archangel = new ImageIcon("enemies/100archangel.png");
-    ImageIcon jackFrost = new ImageIcon("enemies/100jackFrost.png");
-    ImageIcon legion = new ImageIcon("enemies/100legion.png");
-    ImageIcon principality = new ImageIcon("enemies/100principality.png");
+    ImageIcon archangelIMG = new ImageIcon("enemies/100archangel.png");
+    ImageIcon jackFrostIMG = new ImageIcon("enemies/100jackFrost.png");
+    ImageIcon legionIMG = new ImageIcon("enemies/100legion.png");
+    ImageIcon principalityIMG = new ImageIcon("enemies/100principality.png");
+    // turning enemies into jlabels
+    JLabel archangel = new JLabel(archangelIMG);
+    JLabel jackFrost = new JLabel(jackFrostIMG);
+    JLabel legion = new JLabel(legionIMG);
+    JLabel principality = new JLabel(principalityIMG);
+    
+    // elements and affinities
+    ImageIcon fireIMG = new ImageIcon("elements/fire2.png");
+    ImageIcon waterIMG = new ImageIcon("elements/water2.png");
+    ImageIcon earthIMG = new ImageIcon("elements/earth2.png");
+    ImageIcon airIMG = new ImageIcon("elements/air2.png");
+    ImageIcon sunIMG = new ImageIcon("elements/sun2.png");
+    ImageIcon moonIMG = new ImageIcon("elements/moon2.png");
+    ImageIcon physIMG = new ImageIcon("elements/phys2.png");
+    ImageIcon weakIMG = new ImageIcon("elements/weak2.png");
+    ImageIcon resistIMG = new ImageIcon("elements/resist2.png");
+    ImageIcon nullifyIMG = new ImageIcon("elements/nullify2.png");
+    ImageIcon normalIMG = new ImageIcon("elements/normal2.png");
+    //turning elements and affinites into jlabels
+    JLabel fire = new JLabel(fireIMG);
+    JLabel water = new JLabel(waterIMG);
+    JLabel earth = new JLabel(earthIMG);
+    JLabel air = new JLabel(airIMG);
+    JLabel sun = new JLabel(sunIMG);
+    JLabel moon = new JLabel(moonIMG);
+    JLabel phys = new JLabel(physIMG);
+    JLabel weak = new JLabel(weakIMG);
+    JLabel resist = new JLabel(resistIMG);
+    JLabel nullify = new JLabel(nullifyIMG);
+    JLabel normal = new JLabel(normalIMG);
 }
