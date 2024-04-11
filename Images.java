@@ -43,17 +43,17 @@ public class Images
     JLabel principality = new JLabel(principalityIMG);
     
     // elements and affinities
-    ImageIcon fireIMG = new ImageIcon("elements/fire2.png");
-    ImageIcon waterIMG = new ImageIcon("elements/water2.png");
-    ImageIcon earthIMG = new ImageIcon("elements/earth2.png");
-    ImageIcon airIMG = new ImageIcon("elements/air2.png");
-    ImageIcon sunIMG = new ImageIcon("elements/sun2.png");
-    ImageIcon moonIMG = new ImageIcon("elements/moon2.png");
-    ImageIcon physIMG = new ImageIcon("elements/phys2.png");
-    ImageIcon weakIMG = new ImageIcon("elements/weak2.png");
-    ImageIcon resistIMG = new ImageIcon("elements/resist2.png");
-    ImageIcon nullifyIMG = new ImageIcon("elements/nullify2.png");
-    ImageIcon normalIMG = new ImageIcon("elements/normal2.png");
+    ImageIcon fireIMG = new ImageIcon("elements/fire3.png");
+    ImageIcon waterIMG = new ImageIcon("elements/water3.png");
+    ImageIcon earthIMG = new ImageIcon("elements/earth3.png");
+    ImageIcon airIMG = new ImageIcon("elements/air3.png");
+    ImageIcon sunIMG = new ImageIcon("elements/sun3.png");
+    ImageIcon moonIMG = new ImageIcon("elements/moon3.png");
+    ImageIcon physIMG = new ImageIcon("elements/phys3.png");
+    ImageIcon weakIMG = new ImageIcon("elements/weak3.png");
+    ImageIcon resistIMG = new ImageIcon("elements/resist3.png");
+    ImageIcon nullifyIMG = new ImageIcon("elements/nullify3.png");
+    ImageIcon normalIMG = new ImageIcon("elements/normal3.png");
     //turning elements and affinites into jlabels
     JLabel fire = new JLabel(fireIMG);
     JLabel water = new JLabel(waterIMG);
@@ -65,5 +65,4 @@ public class Images
     JLabel weak = new JLabel(weakIMG);
     JLabel resist = new JLabel(resistIMG);
     JLabel nullify = new JLabel(nullifyIMG);
-    JLabel normal = new JLabel(normalIMG);
 }

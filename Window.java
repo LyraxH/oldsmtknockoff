@@ -158,14 +158,22 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         
         // adding variables to game window
         gameWindow.setLayout(new GridLayout(2, 4, 50, 100));
-        gameWindow.add(allyOneSprite);
-        gameWindow.add(allyTwoSprite);
-        gameWindow.add(allyThreeSprite);
-        gameWindow.add(allyFourSprite);
         gameWindow.add(enemyOneSprite);
+        enemyOneSprite.setIcon(img.archangelIMG);
         gameWindow.add(enemyTwoSprite);
+        enemyTwoSprite.setIcon(img.jackFrostIMG);
         gameWindow.add(enemyThreeSprite);
+        enemyThreeSprite.setIcon(img.legionIMG);
         gameWindow.add(enemyFourSprite);
+        enemyFourSprite.setIcon(img.principalityIMG);
+        gameWindow.add(allyOneSprite);
+        allyOneSprite.setIcon(img.ameNoUzumeIMG);
+        gameWindow.add(allyTwoSprite);
+        allyTwoSprite.setIcon(img.cendrillonIMG);
+        gameWindow.add(allyThreeSprite);
+        allyThreeSprite.setIcon(img.orpheusIMG);
+        gameWindow.add(allyFourSprite);
+        allyFourSprite.setIcon(img.robinHoodIMG);
         
         initialize();
     }
@@ -314,31 +322,30 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         updateActionCommands();
         String cmd = e.getActionCommand();
         switch (cmd){
-            // stat view clicks
-            case "ameNoUzume":
-                System.out.println("ame no uzume stats view");
-                createStatsMenu("Ame-No-Uzume", 0, 1, 2, 3, 4, 5, 6, 7);
-                break;
-            case "archangel":
-                System.out.println("archangel stats view");
-                break;
+            // stat view clicks // 0 = fire, 1 = water, 2 = air, 3 = earth, 4 = sun, 5 = moon, 6 = phys
+            case "ameNoUzume": // 0 = normal, 1 = weak, 2 = null, 3 = resist
+                createStatsMenu("Ame-No-Uzume", 0, 1, 0, 3, 0, 0, 2, 0);
+                break;            
             case "cendrillon":
-                System.out.println("cendrillon stats view");
-                break;
-            case "jackFrost":
-                System.out.println("jack frost stats view");
-                break;
-            case "legion":
-                System.out.println("legion stats view");
+                createStatsMenu("Cendrillon", 1, 1, 0, 3, 0, 0, 2, 0);
                 break;
             case "orpheus":
-                System.out.println("orpheus stats view");
-                break;
-            case "principality":
-                System.out.println("principality stats view");
+                createStatsMenu("Orpheus", 2, 1, 0, 3, 0, 0, 2, 0);
                 break;
             case "robinHood":
-                System.out.println("robin hood stats view");
+                createStatsMenu("Robin Hood", 3, 1, 0, 3, 0, 0, 2, 0);
+                break;
+            case "archangel":
+                createStatsMenu("Archangel", 4, 1, 0, 3, 0, 0, 2, 0);
+                break;
+            case "jackFrost":
+                createStatsMenu("Jack Frost", 5, 1, 0, 3, 0, 0, 2, 0);
+                break;
+            case "legion":
+                createStatsMenu("Legion", 6, 1, 0, 3, 0, 0, 2, 0);
+                break;
+            case "principality":
+                createStatsMenu("Principality", 7, 1, 0, 3, 0, 0, 2, 0);
                 break;
                 
             // move button clicks
@@ -418,30 +425,149 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         JDialog box = new JDialog(this);
         box.setTitle(name + " stats");
         box.setBounds(200,400, 800, 200);
-        box.setLayout(new GridLayout(2, 8));
+        box.setLayout(new GridLayout(2, 8, 20, 20));
         
         JLabel nameLabel = new JLabel(name);
         switch (character){
             case 0:
                 box.add(img.ameNoUzume);
                 break;
-        } 
-        box.add(img.fire); // adding affinities to the top row
-        box.add(img.water); // adding affinities to the top row
-        box.add(img.earth); // adding affinities to the top row
-        box.add(img.air); // adding affinities to the top row
-        box.add(img.sun); // adding affinities to the top row
-        box.add(img.moon); // adding affinities to the top row
-        box.add(img.phys); // adding affinities to the top row
+            case 1:
+                box.add(img.cendrillon);
+                break;
+            case 2:
+                box.add(img.orpheus);
+                break;
+            case 3:
+                box.add(img.robinHood);
+                break;
+            case 4:
+                box.add(img.archangel);
+                break;
+            case 5:
+                box.add(img.jackFrost);
+                break;
+            case 6:
+                box.add(img.legion);
+                break;
+            case 7:
+                box.add(img.principality);
+                break;
+        }
+        box.add(img.fire); // 1
+        box.add(img.water); // 2
+        box.add(img.earth); // 3
+        box.add(img.air); // 4
+        box.add(img.sun); // 5
+        box.add(img.moon); // 6
+        box.add(img.phys); // 7
+        
         box.add(nameLabel); // adding name to the bottom row
-        
-        box.add(img.weak);
-        box.add(img.resist);
-        box.add(img.nullify);
-        box.add(img.normal);
-        
-        
-        
+        switch (one){
+            case 0: // normal
+                JLabel normal = new JLabel(img.normalIMG);
+                box.add(normal);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (two){
+            case 0: // normal
+                JLabel normalTwo = new JLabel(img.normalIMG);
+                box.add(normalTwo);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (three){
+            case 0: // normal
+                JLabel normalThree = new JLabel(img.normalIMG);
+                box.add(normalThree);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (four){
+            case 0: // normal
+                JLabel normalFour = new JLabel(img.normalIMG);
+                box.add(normalFour);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (five){
+            case 0: // normal
+                JLabel normalFive = new JLabel(img.normalIMG);
+                box.add(normalFive);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (six){
+            case 0: // normal
+                JLabel normalSix = new JLabel(img.normalIMG);
+                box.add(normalSix);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
+        switch (seven){
+            case 0: // normal
+                JLabel normalSeven = new JLabel(img.normalIMG);
+                box.add(normalSeven);
+                break;
+            case 1: // weak
+                box.add(img.weak);
+                break;
+            case 2: // null
+                box.add(img.nullify);
+                break;
+            case 3: // resist
+                box.add(img.resist);
+                break;
+        }
         
         box.toFront();
         box.setVisible(true);

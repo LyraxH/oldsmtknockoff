@@ -48,6 +48,18 @@ public class Game
         
     }
     
+    public void attack(int ally, int target, int move){
+        
+    }
+    
+    public void guard(int ally){
+        
+    }
+    
+    public void magic (int ally, int target, int move){
+        
+    }
+    
     /**
      * ELEMENTS AND INDEX
      * 0 - fire
@@ -57,5 +69,17 @@ public class Game
      * 4 - sun
      * 5 - moon
      * 6 - physical
+     */
+    
+    /**
+     * CHARACTERS AND INDEX
+     * 0 - ame no uzume
+     * 1 - cendrillon
+     * 2 - orpheus
+     * 3 - robin hood
+     * 4 - archangel
+     * 5 - jack frost
+     * 6 - legion
+     * 7 - principality
      */
 }

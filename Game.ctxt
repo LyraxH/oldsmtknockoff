@@ -2,4 +2,10 @@
 comment0.target=Game
 comment1.params=
 comment1.target=void\ Start()
-numComments=2
+comment2.params=ally\ target\ move
+comment2.target=void\ attack(int,\ int,\ int)
+comment3.params=ally
+comment3.target=void\ guard(int)
+comment4.params=ally\ target\ move
+comment4.target=void\ magic(int,\ int,\ int)
+numComments=5
