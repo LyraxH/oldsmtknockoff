@@ -10,17 +10,10 @@ public class Game
     Images img = new Images();
     Random rng = new Random();
     
+    // variable for chat
+    ArrayList<String> textHistory = new ArrayList<String>();
+    
     // varialbes for characters
-    int allyOne = 1;
-    int allyTwo = 2;
-    int allyThree = 3;
-    int allyFour = 4;
-    
-    int enemyOne = 1;
-    int enemyTwo = 2;
-    int enemyThree = 3;
-    int enemyFour = 4;
-    
     int hpAllyOne;
     int hpMaxAllyOne;
     int hpAllyTwo;
@@ -41,25 +34,147 @@ public class Game
     int hpEnemyFour;
     
     // variables for game
-    int turn;
-    int currentCharacter;
+    int turn = 0; // 0 = ally, 1 = enemy.
+    int currentCharacter = 0; // what out of four characters turn it is
+    // goes turn 0, character 1-2-3-4, then turn 1, character 1-2-3-4. then repeat
+    ArrayList<Integer> orderOfOperations = new ArrayList<Integer>();
+    int difficulty;
 
     public void Start(){
-        
+        hpAllyOne = hpMaxAllyOne;
+        hpAllyTwo = hpMaxAllyTwo;
+        hpAllyThree = hpMaxAllyThree;
+        hpAllyFour = hpMaxAllyFour;
+        textHistory.add("Welcome to my shitty SMT knockoff for school");
+        textHistory.add("made by taison");
+        textHistory.add("xdd");
+        currentCharacter = 0;
+        turn = 0;
     }
     
-    public void attack(int ally, int target, int move){
-        
+    public void guard(String who){
+        textHistory.add(who + " Guards");
     }
     
-    public void guard(int ally){
-        
+    public void openStats(int who){
+        switch (who){
+            case 0:
+                textHistory.add("opened Ame No Uzume stats");
+                break;
+            case 1:
+                textHistory.add("opened Cendrillon stats");
+                break;
+            case 2:
+                textHistory.add("opened Orpheus stats");
+                break;
+            case 3:
+                textHistory.add("opened Robin Hood stats");
+                break;
+            case 4:
+                textHistory.add("opened Archangel stats");
+                break;
+            case 5:
+                textHistory.add("opened Jack Frost stats");
+                break;
+            case 6:
+                textHistory.add("opened Legion stats");
+                break;
+            case 7:
+                textHistory.add("opened Principality stats");
+                break;
+        }
     }
     
-    public void magic (int ally, int target, int move){
-        
+    public void move(int move){
+        switch (turn){
+            case 0: // if its an allies turn
+                switch (currentCharacter){ // which ally is it
+                    case 0: // ame no uzume, wind
+                        switch (move){ // what move are they making
+                            case 0:
+                                break;
+                            case 1:
+                                guard("Ame no uzume");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+                        currentCharacter++;
+                        break;
+                    case 1: // cendrillon, water damage
+                        switch (move){ // what move are they making
+                            case 0:
+                                break;
+                            case 1:
+                                guard("Cendrillon");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+                        currentCharacter++;    
+                        break;
+                    case 2: // orpheus, moon damage
+                        switch (move){ // what move are they making
+                            case 0:
+                                break;
+                            case 1:
+                                guard("Orpheus");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+                        currentCharacter++;
+                        break;
+                    case 3: // robin hood, sun damage
+                        switch (move){ // what move are they making
+                            case 0:
+                                break;
+                            case 1:
+                                guard("Robin Hood");
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+                        currentCharacter = 0;
+                        turn = 1;
+                        break;
+                }
+                break;
+            case 1: // if its an enemies turn
+                switch (currentCharacter){
+                    case 0:
+                        // do the rng shit.
+                        break;
+                }
+                break;
+        }
     }
     
+    
+    public void setDifficulty(int set){
+        switch (set){
+            case 0:
+                System.out.println("difficulty : easy");
+                difficulty = set;
+                break;
+            case 1:
+                System.out.println("difficulty : medium");
+                difficulty = set;
+                break;
+            case 2:
+                System.out.println("difficulty : hard");
+                difficulty = set;
+                break;
+        }
+    }
     /**
      * ELEMENTS AND INDEX
      * 0 - fire

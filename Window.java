@@ -24,13 +24,12 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     JPanel allyWindow = new JPanel(); // where ally health is displayed
     JPanel moveWindow = new JPanel(); // where actions can be taken
     JPanel chatWindow = new JPanel(); // where text of the actions taken is displayed
-    
+
     // chat window variables
-    ArrayList<String> textHistory = new ArrayList<String>(); // so we cna keep a history of what has been added
     JLabel textUpdateOne = new JLabel("FILLER TEXT NUMBER ONE NO ONE WILL EVER SEE THIS XDD");
     JLabel textUpdateTwo = new JLabel("https://youtube.com/@lyraxh");
     JLabel textUpdateThree = new JLabel("ASDASDASD");
-    
+
     // enemy window variables
     JButton enemyOneButton = new JButton("EnemyOne");
     JButton enemyTwoButton = new JButton("EnemyTwo");
@@ -40,7 +39,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     JLabel enemyTwoHPText = new JLabel("HP: 300 / 300");
     JLabel enemyThreeHPText = new JLabel("HP: 300 / 300");
     JLabel enemyFourHPText = new JLabel("HP: 300 / 300");
-    
+
     // ally window variables
     JButton allyOneButton = new JButton("AllyOne");
     JButton allyTwoButton = new JButton("AllyTwo");
@@ -54,14 +53,14 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     JLabel allyTwoSPText = new JLabel("SP: 150 / 150");
     JLabel allyThreeSPText = new JLabel("SP: 150 / 150");
     JLabel allyFourSPText = new JLabel("SP: 150 / 150");
-    
+
     //move window variables
     JLabel currentMoveText = new JLabel("Ally One");
     JButton moveButtonOne = new JButton(img.attackIcon);
     JButton moveButtonTwo = new JButton(img.unGuardIcon);
     JButton moveButtonThree = new JButton(img.unMagicIcon);
     JButton moveButtonFour = new JButton(img.unItemIcon);
-    
+
     // game window variables
     JLabel allyOneSprite = new JLabel("ally one sprite");
     JLabel allyTwoSprite = new JLabel("ally two sprite");
@@ -71,16 +70,20 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
     JLabel enemyTwoSprite = new JLabel("enemy two sprite");
     JLabel enemyThreeSprite = new JLabel("enemy three sprite");
     JLabel enemyFourSprite = new JLabel("enemy four sprite");
-    
+
     // j menu variables
     JMenuBar menuBar = new JMenuBar();
     JMenu system = new JMenu("System");
     JMenu music = new JMenu("Music");
+    JMenu difficulty = new JMenu("Difficulty");
     JMenu battleLog = new JMenu("Battle Log");
     JMenuItem quitGame = new JMenuItem("Quit Game");
     JMenuItem nextSong = new JMenuItem("Next Track");
     JMenuItem previousSong = new JMenuItem("Previous Track");
     JMenuItem pauseMusic = new JMenuItem("Pause Music");
+    JMenuItem easyDif = new JMenuItem("Easy");
+    JMenuItem mediumDif = new JMenuItem("Medium");
+    JMenuItem hardDif = new JMenuItem("Hard");
     JMenuItem displayBattleLog = new JMenuItem("Display Battle Log");
 
     public Window(){
@@ -93,7 +96,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         this.add(allyWindow, BorderLayout.LINE_END);
         this.add(chatWindow, BorderLayout.PAGE_START);
         this.add(moveWindow, BorderLayout.PAGE_END);
-        
+
         // adding variables to the chat window region
         chatWindow.setLayout(new BoxLayout(chatWindow, BoxLayout.PAGE_AXIS));
         textUpdateOne.setAlignmentX(CENTER_ALIGNMENT);
@@ -102,12 +105,9 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         chatWindow.add(textUpdateOne);
         chatWindow.add(textUpdateTwo);
         chatWindow.add(textUpdateThree);
-        textHistory.add("Welcome to my shitty SMT knockoff for school");
-        textHistory.add("made by taison");
-        textHistory.add("xdd");
         updateText();
-        
-        
+        updateCurrentMoveText();
+
         // adding variables to the move window region
         moveWindow.setLayout(new GridLayout(1,0));
         moveWindow.add(currentMoveText);
@@ -115,26 +115,25 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         moveWindow.add(moveButtonTwo);
         moveWindow.add(moveButtonThree);
         moveWindow.add(moveButtonFour);
-        
+
         // adding variables to the ally window region
         allyWindow.setLayout(new GridLayout(4,3, 0, 25));
         allyWindow.add(allyOneButton);
         allyWindow.add(allyOneHPText);
         allyWindow.add(allyOneSPText);
-        
+
         allyWindow.add(allyTwoButton);
         allyWindow.add(allyTwoHPText);
         allyWindow.add(allyTwoSPText);
-        
+
         allyWindow.add(allyThreeButton);
         allyWindow.add(allyThreeHPText);
         allyWindow.add(allyThreeSPText);
-        
+
         allyWindow.add(allyFourButton);
         allyWindow.add(allyFourHPText);
         allyWindow.add(allyFourSPText);
-        
-        
+
         // adding variables to the enemy window region
         enemyWindow.setLayout(new GridLayout(4,2, 50, 25));
         enemyWindow.add(enemyOneButton);
@@ -155,7 +154,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         chatWindow.setPreferredSize(new Dimension(0, 50));
         moveWindow.setBackground(Color.pink);
         moveWindow.setPreferredSize(new Dimension(0, 200));
-        
+
         // adding variables to game window
         gameWindow.setLayout(new GridLayout(2, 4, 50, 100));
         gameWindow.add(enemyOneSprite);
@@ -174,10 +173,47 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         allyThreeSprite.setIcon(img.orpheusIMG);
         gameWindow.add(allyFourSprite);
         allyFourSprite.setIcon(img.robinHoodIMG);
-        
+
         initialize();
     }
     
+    public void updateCurrentMoveText(){
+        switch (game.turn){
+            case 0:
+                switch (game.currentCharacter){
+                    case 0:
+                        currentMoveText.setText("Ame No Uzume");
+                        break;
+                    case 1:
+                        currentMoveText.setText("Cendrillon");
+                        break;
+                    case 2:
+                        currentMoveText.setText("Orpheus");
+                        break;
+                    case 3:
+                        currentMoveText.setText("Robin Hood");
+                        break;
+                }
+                break;
+            case 1:
+                switch (game.currentCharacter){
+                    case 0:
+                        currentMoveText.setText("Archangel");
+                        break;
+                    case 1:
+                        currentMoveText.setText("Jack Frost");
+                        break;
+                    case 2:
+                        currentMoveText.setText("Legion");
+                        break;
+                    case 3:
+                        currentMoveText.setText("Principality");
+                        break;
+                }
+                break;
+        }
+    }
+
     public void updateScreen(){
         switch (page){
             case 0: // if on home page
@@ -208,18 +244,30 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                         break;
                 }
                 break;
+            case 1: // if on attack page
+                switch (selected){
+                    case 1: // if move one seleceted
+                        moveButtonOne.setText("Gay");
+                        moveButtonTwo.setText("Cancer");
+                        moveButtonThree.setText("cancer");
+                        moveButtonFour.setText("cancer");
+                        break;
+                }
+                break;
         }
     }
+
     public void updateText(){
-        int size = textHistory.size();
-        textUpdateOne.setText(textHistory.get(size - 3));
-        textUpdateTwo.setText(textHistory.get(size - 2));
-        textUpdateThree.setText(textHistory.get(size - 1));
+        int size = game.textHistory.size();
+        textUpdateOne.setText(game.textHistory.get(size - 3));
+        textUpdateTwo.setText(game.textHistory.get(size - 2));
+        textUpdateThree.setText(game.textHistory.get(size - 1));
     }
-    
+
     void jRequestFocus(){
         this.requestFocus();
     }
+
     void initialize(){
         this.setTitle("SMT knock off in java swing for school");
         this.getContentPane().setPreferredSize(new Dimension (1280, 720));
@@ -228,7 +276,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         this.setFocusable(true);
         jRequestFocus();
         this.toFront();
-        
+
         this.addKeyListener(this);
         allyOneButton.addActionListener(this);
         allyTwoButton.addActionListener(this);
@@ -246,18 +294,23 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         moveButtonThree.addMouseListener(this);
         moveButtonFour.addActionListener(this);
         moveButtonFour.addMouseListener(this);
+
         quitGame.addActionListener(this);
         nextSong.addActionListener(this);
         previousSong.addActionListener(this);
         pauseMusic.addActionListener(this);
         displayBattleLog.addActionListener(this);
+        easyDif.addActionListener(this);
+        mediumDif.addActionListener(this);
+        hardDif.addActionListener(this);
+
         updateActionCommands();
-        
+
         gameWindow.setVisible(true);
         this.pack();
         this.setVisible(true);
     }
-    
+
     void updateActionCommands(){
         allyOneButton.setActionCommand("ameNoUzume");
         allyTwoButton.setActionCommand("cendrillon");
@@ -267,7 +320,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         enemyTwoButton.setActionCommand("jackFrost");
         enemyThreeButton.setActionCommand("legion");
         enemyFourButton.setActionCommand("principality");
-        
+
         switch (page){
             case 0: // if main page
                 moveButtonOne.setActionCommand("attack");
@@ -283,7 +336,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                 break;
         }
     }
-    
+
     void updateFrame(){
         switch (page){ // what menu
             case 0: // if main menu
@@ -316,53 +369,69 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                 break;
         }
     }
-    
-    
+
     public void actionPerformed(ActionEvent e){
         updateActionCommands();
         String cmd = e.getActionCommand();
+        System.out.println(e);
         switch (cmd){
-            // stat view clicks // 0 = fire, 1 = water, 2 = air, 3 = earth, 4 = sun, 5 = moon, 6 = phys
+                // stat view clicks // 0 = fire, 1 = water, 2 = air, 3 = earth, 4 = sun, 5 = moon, 6 = phys
             case "ameNoUzume": // 0 = normal, 1 = weak, 2 = null, 3 = resist
                 createStatsMenu("Ame-No-Uzume", 0, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(0);
+                updateText();
                 break;            
             case "cendrillon":
                 createStatsMenu("Cendrillon", 1, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(1);
+                updateText();
                 break;
             case "orpheus":
                 createStatsMenu("Orpheus", 2, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(2);
+                updateText();
                 break;
             case "robinHood":
                 createStatsMenu("Robin Hood", 3, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(3);
+                updateText();
                 break;
             case "archangel":
                 createStatsMenu("Archangel", 4, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(4);
+                updateText();
                 break;
             case "jackFrost":
                 createStatsMenu("Jack Frost", 5, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(5);
+                updateText();
                 break;
             case "legion":
                 createStatsMenu("Legion", 6, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(6);
+                updateText();
                 break;
             case "principality":
                 createStatsMenu("Principality", 7, 1, 0, 3, 0, 0, 2, 0);
+                game.openStats(7);
+                updateText();
                 break;
-                
-            // move button clicks
+
+                // move button clicks
             case "attack":
-                System.out.println("attack");
+                page = 1; // set page to attack
                 break;
             case "guard":
-                System.out.println("guard");
+                game.move(1);
                 break;
             case "magic":
-                System.out.println("magic");
+                page = 2; // set page to magic
                 break;
             case "item":
-                System.out.println("item");
+                page = 3; // set page to item
                 break;
-                
-            // menu bar clicks
+
+                // menu bar clicks
             case "Quit Game":
                 System.exit(0);
                 break;
@@ -372,61 +441,72 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                 break;
             case "Pause Music":
                 break;
+            case "Easy":
+                game.setDifficulty(0);
+                break;
+            case "Medium":
+                game.setDifficulty(1);
+                break;
+            case "Hard":
+                game.setDifficulty(2);
+                break;
             case "Display Battle Log":
                 createBattleLog();
                 break;
         }
         jRequestFocus();
     }
+
     public void keyPressed(KeyEvent e){
         int keyCode = e.getKeyCode();
         switch (page){ // what menu are we in
             case 0: // if main page
                 switch (keyCode){
-                case 37: // left arrow in main page
-                    if (selected == 0){
-                        selected = 0;
-                    } else {
-                        selected--;
-                    }
-                    updateFrame();
-                    break;
-                case 39: // right arrow in main page
-                    if (selected == 3){
-                        selected = 3;
-                    } else {
-                        selected++;
-                    }
-                    updateFrame();
-                    break;
-                case 90: // if z key pressed
-                    switch (selected){
-                        case 0:
-                            moveButtonOne.doClick();
-                            break;
-                        case 1:
-                            moveButtonTwo.doClick();
-                            break;
-                        case 2:
-                            moveButtonThree.doClick();
-                            break;
-                        case 3:
-                            moveButtonFour.doClick();
-                            break;
-                    }
-                    break;
+                    case 37: // left arrow in main page
+                        if (selected == 0){
+                            selected = 0;
+                        } else {
+                            selected--;
+                        }
+                        updateFrame();
+                        break;
+                    case 39: // right arrow in main page
+                        if (selected == 3){
+                            selected = 3;
+                        } else {
+                            selected++;
+                        }
+                        updateFrame();
+                        break;
+                    case 90: // if z key pressed
+                        switch (selected){
+                            case 0:
+                                moveButtonOne.doClick();
+                                break;
+                            case 1:
+                                moveButtonTwo.doClick();
+                                break;
+                            case 2:
+                                moveButtonThree.doClick();
+                                break;
+                            case 3:
+                                moveButtonFour.doClick();
+                                break;
+                        }
+                        break;
                 }
                 break;
             case 2:
                 break;
         }
     }
+
     void createStatsMenu(String name, int character, int one, int two, int three, int four, int five, int six, int seven){
         JDialog box = new JDialog(this);
         box.setTitle(name + " stats");
         box.setBounds(200,400, 800, 200);
         box.setLayout(new GridLayout(2, 8, 20, 20));
-        
+
         JLabel nameLabel = new JLabel(name);
         switch (character){
             case 0:
@@ -461,7 +541,7 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         box.add(img.sun); // 5
         box.add(img.moon); // 6
         box.add(img.phys); // 7
-        
+
         box.add(nameLabel); // adding name to the bottom row
         switch (one){
             case 0: // normal
@@ -568,18 +648,19 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
                 box.add(img.resist);
                 break;
         }
-        
+
         box.toFront();
         box.setVisible(true);
     }
+
     public void createBattleLog(){
         JDialog box = new JDialog(this);
         box.setTitle("Battle Log");
         String a;
         String b;
-        a = "0: " + textHistory.get(0) + " \n";
-        for (int i = 1; i < textHistory.size(); i++){
-            b = textHistory.get(i);
+        a = "0: " + game.textHistory.get(0) + " \n";
+        for (int i = 1; i < game.textHistory.size(); i++){
+            b = game.textHistory.get(i);
             b = i + ": " + b + " \n";
             a = a + b;
         }
@@ -589,8 +670,11 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         box.toFront();
         box.setVisible(true);
     }
+
     public void keyReleased(KeyEvent e){}
+
     public void keyTyped(KeyEvent e){}
+
     public void mouseEntered(MouseEvent e){
         int hover = e.getXOnScreen();
         if (hover > 263 && hover < 518){ //button one
@@ -604,138 +688,43 @@ public class Window extends JFrame implements ActionListener, KeyListener, Mouse
         }
         updateFrame();
     }
+
     public void mouseExited(MouseEvent e){}
+
     public void mousePressed(MouseEvent e){}
+
     public void mouseReleased(MouseEvent e){}
+
     public void mouseClicked(MouseEvent e){}
+
     void setMenu(){
         this.setJMenuBar(menuBar);
         menuBar.add(system);
         menuBar.add(music);
+        menuBar.add(difficulty);
         menuBar.add(battleLog);
-        
+
         system.add(quitGame);
-        
+
         music.add(nextSong);
         music.add(previousSong);
         music.add(pauseMusic);
-        
+
+        difficulty.add(easyDif);
+        difficulty.add(mediumDif);
+        difficulty.add(hardDif);
+
         battleLog.add(displayBattleLog);
     }
-    
+
     void setImages(){
-        switch (game.allyOne){
-            case 1:
-                allyOneButton.setIcon(img.ameNoUzumeIMG);
-                break;
-            case 2:
-                allyOneButton.setIcon(img.cendrillonIMG);
-                break;
-            case 3:
-                allyOneButton.setIcon(img.orpheusIMG);
-                break;
-            case 4:
-                allyOneButton.setIcon(img.robinHoodIMG);
-                break;
-        }
-        switch (game.allyTwo){
-            case 1:
-                allyTwoButton.setIcon(img.ameNoUzumeIMG);
-                break;
-            case 2:
-                allyTwoButton.setIcon(img.cendrillonIMG);
-                break;
-            case 3:
-                allyTwoButton.setIcon(img.orpheusIMG);
-                break;
-            case 4:
-                allyTwoButton.setIcon(img.robinHoodIMG);
-                break;
-        }
-        switch (game.allyThree){
-            case 1:
-                allyThreeButton.setIcon(img.ameNoUzumeIMG);
-                break;
-            case 2:
-                allyThreeButton.setIcon(img.cendrillonIMG);
-                break;
-            case 3:
-                allyThreeButton.setIcon(img.orpheusIMG);
-                break;
-            case 4:
-                allyThreeButton.setIcon(img.robinHoodIMG);
-                break;
-        }
-        switch (game.allyFour){
-            case 1:
-                allyFourButton.setIcon(img.ameNoUzumeIMG);
-                break;
-            case 2:
-                allyFourButton.setIcon(img.cendrillonIMG);
-                break;
-            case 3:
-                allyFourButton.setIcon(img.orpheusIMG);
-                break;
-            case 4:
-                allyFourButton.setIcon(img.robinHoodIMG);
-                break;
-        }
-        
-        switch (game.enemyOne){
-            case 1:
-                enemyOneButton.setIcon(img.archangelIMG);
-                break;
-            case 2:
-                enemyOneButton.setIcon(img.jackFrostIMG);
-                break;
-            case 3:
-                enemyOneButton.setIcon(img.legionIMG);
-                break;
-            case 4:
-                enemyOneButton.setIcon(img.principalityIMG);
-                break;
-        }
-        switch (game.enemyTwo){
-            case 1:
-                enemyTwoButton.setIcon(img.archangelIMG);
-                break;
-            case 2:
-                enemyTwoButton.setIcon(img.jackFrostIMG);
-                break;
-            case 3:
-                enemyTwoButton.setIcon(img.legionIMG);
-                break;
-            case 4:
-                enemyTwoButton.setIcon(img.principalityIMG);
-                break;
-        }
-        switch (game.enemyThree){
-            case 1:
-                enemyThreeButton.setIcon(img.archangelIMG);
-                break;
-            case 2:
-                enemyThreeButton.setIcon(img.jackFrostIMG);
-                break;
-            case 3:
-                enemyThreeButton.setIcon(img.legionIMG);
-                break;
-            case 4:
-                enemyThreeButton.setIcon(img.principalityIMG);
-                break;
-        }
-        switch (game.enemyFour){
-            case 1:
-                enemyFourButton.setIcon(img.archangelIMG);
-                break;
-            case 2:
-                enemyFourButton.setIcon(img.jackFrostIMG);
-                break;
-            case 3:
-                enemyFourButton.setIcon(img.legionIMG);
-                break;
-            case 4:
-                enemyFourButton.setIcon(img.principalityIMG);
-                break;
-        }
+        allyOneButton.setIcon(img.ameNoUzumeIMG);
+        allyTwoButton.setIcon(img.cendrillonIMG);
+        allyThreeButton.setIcon(img.orpheusIMG);
+        allyFourButton.setIcon(img.robinHoodIMG);
+        enemyOneButton.setIcon(img.archangelIMG);
+        enemyTwoButton.setIcon(img.jackFrostIMG);
+        enemyThreeButton.setIcon(img.legionIMG);
+        enemyFourButton.setIcon(img.principalityIMG);
     }
 }
